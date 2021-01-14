@@ -1,2 +1,5 @@
 env/
 dat/
+.matplotlib/
+
+#git rm --cached -r .
