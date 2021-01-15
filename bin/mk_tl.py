@@ -1,4 +1,4 @@
-import os,sys
+import os,sys,re
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -24,10 +24,14 @@ _url.append(f"https://www.jma.go.jp/jp/g3/images/jp_c/24h/{img_24h}.png {img_24h
 for i in range(0, 10 + 1):
   t = (pd.to_datetime(ini_j) - timedelta(hours=3 * i)).strftime("%Y%m%d%H%M")
   _url.append(f"https://www.jma.go.jp/jp/g3/images/jp_c/{t[2:10]}.png {t[2:10]}")
+  # images/asia_c/21011315.png
+
+_url_asia = [re.sub("jp_c", "asia_c", url) for url in _url]
+
 
 with open("../tbl/list_time.dat", "w") as f:
-  for url in _url:
-    line = f"{url}\n"
+  for url,url_asia in zip(_url,_url_asia):
+    line = f"{url} {url_asia}\n"
     f.write(line)
 # print(now)
 # print(now12, hh)
