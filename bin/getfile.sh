@@ -7,20 +7,31 @@ OUT=$HOME/OUT
 ENV=$HOME/env
 TBL=$HOME/tbl
 
-#---------
+
+
+#------------------------------------------------------------------------------------------
+# time list making...
+#------------------------------------------------------------------------------------------
 # [確認] https://www.jma.go.jp/jp/g3/
 
 # source activate sori_conda #activate
-# INI_J=202101150900
-# DELTA=12
-# python mk_tl.py $INI_J $DELTA
+INI_J=202101271200
+INI_F=202101272100
+# DELTA=15
+python mk_tl.py $INI_J $INI_F
 # exit
 # ---------
 # exit
 
+# python ./conv_pdf2img.py 
+# exit
+
+#------------------------------------------------------------------------------------------
+# data downloading...
+#------------------------------------------------------------------------------------------
 FLG_KIATSU=0
-FLG_TENKI=1
-FLG_AMEDAS=1
+FLG_TENKI=0
+FLG_AMEDAS=0
 FLG_HIGH=1
 
 #気圧配置図のdownload

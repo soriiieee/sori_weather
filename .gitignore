@@ -1,5 +1,6 @@
 env/
 dat/
 .matplotlib/
+# .DS_Store/
 
 #git rm --cached -r .

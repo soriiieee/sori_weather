@@ -5,11 +5,12 @@ import matplotlib.pyplot as plt
 from datetime import date, datetime, timedelta
 from pdf2image import convert_from_path, convert_from_bytes
 import cv2
+import glob
+from tqdm import tqdm
 
-
-def pdf2img(fname2):
-  img = convert_from_path('../dat/high/{}.pdf'.format(fname2))
-  img[0].save('../dat/high/{}.png'.format(fname2), "png")
+def pdf2img(inpath, outpath):
+  img = convert_from_path(inpath)
+  img[0].save(outpath, "png")
   return
 
 def cut_image(fname2):
@@ -66,7 +67,21 @@ def japan_png():
   return
   
 
+def pdf2png_simple():
+  DIR="/Users/soriiieee/work/sori_weather/dat/high"
+  _fpath = glob.glob(f"{DIR}/*.pdf")
+  for fpath in tqdm(_fpath):
+    fname = os.path.basename(fpath).split(".")[0]
+    outpath = f"{DIR}/png/{fname}.png"
+    # outpath = 
+    pdf2img(fpath, outpath)
+  return
+
+
+
 if __name__ == "__main__":
+  pdf2png_simple()
+  sys.exit()
   fname = '../dat/high/FEAS50_202101140326.pdf'
   fname2 = os.path.basename(fname).split(".")[0]
   #making

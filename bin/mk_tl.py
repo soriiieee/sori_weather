@@ -9,9 +9,10 @@ print("start mk_tl.py..")
 # now = datetime.now()
 # now12 = now.strftime("%Y%m%d%H%M")
 ini_j = sys.argv[1]
+ini_f = sys.argv[2]
 delta = int(sys.argv[2])
-img_24h = (pd.to_datetime(ini_j) + timedelta(hours=delta)).strftime("%Y%m%d%H%M")
-img_48h = (pd.to_datetime(ini_j) + timedelta(hours=delta+24)).strftime("%Y%m%d%H%M")
+img_24h = (pd.to_datetime(ini_f)).strftime("%Y%m%d%H%M")
+img_48h = (pd.to_datetime(ini_f) + timedelta(hours=24)).strftime("%Y%m%d%H%M")
 
 
 _url = []
